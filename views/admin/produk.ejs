@@ -1,0 +1,34 @@
+<%- include('../layout', { title: 'Kelola Produk', body: `
+<section>
+  <div class="page-title"><h2>Kelola Produk</h2></div>
+  <div class="admin-nav">
+    <a href="/admin/produk/new">Tambah Produk</a>
+    <a href="/admin/dashboard">Dashboard</a>
+  </div>
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Harga</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${products.map(product => `
+          <tr>
+            <td>${product.name}</td>
+            <td>Rp${product.price.toLocaleString('id-ID')}</td>
+            <td>
+              <a class="btn" href="/admin/produk/edit/${product.id}">Edit</a>
+              <form style="display:inline-block" method="POST" action="/admin/produk/delete/${product.id}">
+                <button class="btn" type="submit">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div>
+</section>
+` }) %>

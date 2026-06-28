@@ -1,0 +1,20 @@
+<%- include('layout', { title: 'Form Pemesanan', body: `
+<section>
+  <div class="page-title"><h2>Form Pemesanan</h2></div>
+  <div class="form-card">
+    ${errors.length ? `<div class="alert">${errors.join('<br>')}</div>` : ''}
+    <form method="POST" action="/order">
+      <label for="product_id">Pilih Produk</label>
+      <select id="product_id" name="product_id" required>
+        <option value="">-- Pilih produk --</option>
+        ${products.map(product => `<option value="${product.id}">${product.name} - Rp${product.price.toLocaleString('id-ID')}</option>`).join('')}
+      </select>
+
+      <label for="quantity">Jumlah</label>
+      <input id="quantity" name="quantity" type="number" min="1" value="1" />
+
+      <button class="btn" type="submit">Kirim Pesanan</button>
+    </form>
+  </div>
+</section>
+` }) %>

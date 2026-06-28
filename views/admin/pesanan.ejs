@@ -1,0 +1,46 @@
+<%- include('../layout', { title: 'Kelola Pesanan', body: `
+<section>
+  <div class="page-title"><h2>Kelola Pesanan</h2></div>
+  <div class="admin-nav">
+    <a href="/admin/dashboard">Dashboard</a>
+    <a href="/admin/produk">Kelola Produk</a>
+  </div>
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nama Pelanggan</th>
+          <th>Produk</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Tanggal</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${orders.map(order => `
+          <tr>
+            <td>${order.member_name}<br><small>${order.phone}</small></td>
+            <td>${order.product_name}</td>
+            <td>${order.quantity}</td>
+            <td>Rp${order.total_price.toLocaleString('id-ID')}</td>
+            <td><span class="status-chip">${order.status}</span></td>
+            <td>${new Date(order.created_at).toLocaleDateString('id-ID')}</td>
+            <td>
+              <form method="POST" action="/admin/pesanan/update/${order.id}">
+                <select name="status">
+                  <option value="Menunggu konfirmasi"${order.status === 'Menunggu konfirmasi' ? ' selected' : ''}>Menunggu konfirmasi</option>
+                  <option value="Diproses"${order.status === 'Diproses' ? ' selected' : ''}>Diproses</option>
+                  <option value="Selesai"${order.status === 'Selesai' ? ' selected' : ''}>Selesai</option>
+                </select>
+                <button class="btn" type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </div>
+</section>
+` }) %>

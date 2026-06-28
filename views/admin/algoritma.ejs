@@ -1,0 +1,88 @@
+<%- include('../layout', { title: 'Algoritma Pemesanan', body: `
+<section>
+  <div class="page-title"><h2>Algoritma Penjualan Produk</h2></div>
+
+  <div class="form-card algorithm-summary">
+    <p>Diagram berikut menunjukkan proses pemesanan produk dari sisi member dan admin. Setiap langkah dirancang agar sesuai dengan tampilan toko yang hangat dan elegan.</p>
+
+    <div class="algorithm-bars">
+      <div class="algorithm-bar">
+        <span class="step">1</span>
+        <div>
+          <h4>Login Member</h4>
+          <p>Member harus login atau terdaftar sebelum memesan.</p>
+        </div>
+      </div>
+      <div class="algorithm-bar">
+        <span class="step">2</span>
+        <div>
+          <h4>Pilih Produk</h4>
+          <p>Member memilih produk dari katalog lalu menentukan jumlah.</p>
+        </div>
+      </div>
+      <div class="algorithm-bar">
+        <span class="step">3</span>
+        <div>
+          <h4>Validasi Input</h4>
+          <p>Sistem memeriksa apakah produk valid dan jumlah minimal 1.</p>
+        </div>
+      </div>
+      <div class="algorithm-bar">
+        <span class="step">4</span>
+        <div>
+          <h4>Hitung Total</h4>
+          <p>Harga total dihitung berdasarkan harga produk dikali jumlah pesanan.</p>
+        </div>
+      </div>
+      <div class="algorithm-bar">
+        <span class="step">5</span>
+        <div>
+          <h4>Simpan Order</h4>
+          <p>Order tersimpan di database dengan status <em>Menunggu konfirmasi</em>.</p>
+        </div>
+      </div>
+      <div class="algorithm-bar">
+        <span class="step">6</span>
+        <div>
+          <h4>Proses Admin</h4>
+          <p>Admin melihat order lalu memilih status: Diproses, Selesai, atau Dibatalkan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h3>Diagram Alur Pemesanan</h3>
+    <div class="mermaid">
+      flowchart LR
+        A([Login Member]) --> B([Pilih Produk])
+        B --> C{Validasi Input}
+        C -- Valid --> D([Hitung Total Harga])
+        C -- Tidak valid --> E([Tampilkan Kesalahan])
+        D --> F([Simpan Order])
+        F --> G([Status: Menunggu konfirmasi])
+        G --> H([Admin Buka Kelola Pesanan])
+        H --> I([Pilih Status Order])
+        I --> J([Diproses])
+        I --> K([Selesai])
+        I --> L([Dibatalkan])
+        class A,B,D,F,G,H,I,J,K,L stepNode;
+        class E errorNode;
+        classDef stepNode fill:#fdf2e9,stroke:#b37c4d,stroke-width:2px,color:#5f3d2e;
+        classDef errorNode fill:#fbe4e6,stroke:#c2410c,stroke-width:2px,color:#9a3412;
+    </div>
+
+    <h3>Ringkasan Proses</h3>
+    <ul>
+      <li>Order dibuat oleh member setelah login.</li>
+      <li>Hanya order valid yang disimpan ke database.</li>
+      <li>Status awal adalah <strong>Menunggu konfirmasi</strong>.</li>
+      <li>Admin memproses order menggunakan halaman <strong>Kelola Pesanan</strong>.</li>
+      <li>Order berakhir sebagai <strong>Diproses</strong>, <strong>Selesai</strong>, atau <strong>Dibatalkan</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#f7ede2', primaryTextColor: '#5f3d2e', primaryBorderColor: '#b37c4d', lineColor: '#b37c4d', tertiaryColor: '#d9baa7' } });</script>
+` }) %>

@@ -1,0 +1,24 @@
+<%- include('layout', { title: 'Katalog Produk', body: `
+<section>
+  <div class="section-title">
+    <div>
+      <h2>Katalog Produk</h2>
+      <p class="section-description">Temukan koleksi fashion wanita pilihan kami yang elegan, nyaman, dan penuh gaya.</p>
+    </div>
+    <a class="btn" href="/order">Pesan Sekarang</a>
+  </div>
+  <div class="cards">
+    ${products.map(product => `
+      <article class="card">
+        <img src="${product.image}" alt="${product.name}" />
+        <div class="card-body">
+          <h3>${product.name}</h3>
+          <p><strong>Rp${product.price.toLocaleString('id-ID')}</strong></p>
+          <p class="card-description">${product.description}</p>
+        </div>
+        <a class="btn" href="/produk/${product.id}">Detail</a>
+      </article>
+    `).join('')}
+  </div>
+</section>
+` }) %>

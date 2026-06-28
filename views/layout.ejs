@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title || 'Konveksi' %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container site-header">
+      <a class="brand" href="/">CuYaaVibe</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/katalog">Katalog</a>
+        <% if (memberUser) { %>
+          <a href="/order">Pemesanan</a>
+          <span>Selamat datang, <%= memberUser.name %></span>
+          <a href="/member/logout">Logout</a>
+        <% } else { %>
+          <a href="/member/login">Login</a>
+          <a href="/member/register">Daftar</a>
+        <% } %>
+        <% if (adminUser) { %>
+          <a href="/admin/dashboard">Admin</a>
+          <a href="/admin/logout">Logout</a>
+        <% } else { %>
+          <a href="/admin/login">Login Admin</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container <%= adminUser ? 'admin-page' : '' %>">
+    <%- body %>
+  </main>
+
+  <div class="fixed-whatsapp">
+    <a href="<%= whatsappUrl %>" target="_blank" rel="noopener noreferrer" aria-label="Hubungi WhatsApp">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.473-.149-.673.15-.199.297-.768.966-.942 1.165-.173.198-.347.223-.644.075-.297-.149-1.255-.461-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.673-1.626-.922-2.227-.242-.58-.487-.5-.673-.51l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.872.118.571-.085 1.758-.72 2.006-1.414.248-.694.248-1.29.173-1.414-.074-.124-.273-.198-.57-.347z" />
+        <path d="M20.52 3.48A11.685 11.685 0 0 0 12.027.24C5.425.24.24 5.425.24 12.027c0 2.118.553 4.19 1.604 6.025L.24 24l6.143-1.593a11.786 11.786 0 0 0 5.644 1.432h.01c6.602 0 11.787-5.186 11.787-11.787 0-3.146-1.227-6.096-3.49-8.363z" />
+      </svg>
+    </a>
+  </div>
+
+  <footer>
+    <p>CuYaaVibe &bull; Solusi produksi kaos, jaket, topi, dan seragam custom.</p>
+  </footer>
+  <script>
+    // Toggle password visibility for any .toggle-password button
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest && e.target.closest('.toggle-password');
+      if (!btn) return;
+      const container = btn.closest('.password-field-container');
+      if (!container) return;
+      const input = container.querySelector('input');
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.classList.add('visible');
+        btn.setAttribute('aria-label', 'Sembunyikan password');
+      } else {
+        input.type = 'password';
+        btn.classList.remove('visible');
+        btn.setAttribute('aria-label', 'Tunjukkan password');
+      }
+    });
+  </script>
+</body>
+</html>

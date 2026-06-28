@@ -1,0 +1,24 @@
+<%- include('../layout', { title: 'Dashboard Admin', body: `
+<section class="dashboard">
+  <div class="page-title"><h2>Dashboard Admin</h2></div>
+  <div class="admin-nav">
+    <a href="/admin/produk">Kelola Produk</a>
+    <a href="/admin/pesanan">Kelola Pesanan</a>
+    <a href="/admin/logout">Logout</a>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <h3>Total Produk</h3>
+      <p>${counts.products.count}</p>
+    </article>
+    <article class="card">
+      <h3>Total Pesanan</h3>
+      <p>${counts.orders.count}</p>
+    </article>
+    <article class="card">
+      <h3>Total Member</h3>
+      <p>${counts.members.count}</p>
+    </article>
+  </div>
+</section>
+` }) %>

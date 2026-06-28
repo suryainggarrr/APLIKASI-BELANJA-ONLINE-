@@ -1,0 +1,33 @@
+<%- include('../layout', { title: 'Login Member', body: `
+<section>
+  <div class="page-title"><h2>Login Member</h2></div>
+  <div class="form-card">
+    ${message ? `<div style="background: #d1fae5; color: #065f46; padding: 1rem; border-radius: 1rem; margin-bottom: 1rem;">${message}</div>` : ''}
+    ${error ? `<div class="alert">${error}</div>` : ''}
+    <form method="POST" action="/member/login">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="email@example.com" required />
+
+      <label for="password">Password</label>
+      <div class="password-field-container">
+        <input id="password" name="password" type="password" placeholder="••••••••" required />
+        <button type="button" class="toggle-password" aria-label="Tunjukkan password">
+          <svg class="eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3l18 18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.58 10.58A3 3 0 0 0 13.42 13.42" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12s4-7 10-7c2.07 0 3.98.58 5.66 1.57" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.02 16.11A15.88 15.88 0 0 0 22 12s-4 7-10 7c-2.06 0-3.98-.58-5.66-1.57" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="btn" type="submit">Masuk</button>
+    </form>
+    <p>Belum punya akun? <a href="/member/register">Daftar di sini</a></p>
+  </div>
+</section>
+` }) %>

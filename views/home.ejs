@@ -1,0 +1,32 @@
+<%- include('layout', { title: 'Home', body: `
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <h1>CuYaaVibe</h1>
+      <p>Rayakan Keindahan Dirimu Dengan Koleksi Fashion Wanita Yang Anggun, Lembut, dan Penuh Pesona. Karena Setiap Wanita Berhak Tampil Istimewa.</p>
+      <a class="btn" href="/katalog">Lihat Katalog</a>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1520975915384-bdab021ee7f2?auto=format&fit=crop&w=900&q=80" alt="Banner CuYaaVibe" />
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Produk Terbaru</h2>
+    <a href="/katalog" class="btn">Selengkapnya</a>
+  </div>
+  <div class="cards">
+    ${products.map(product => `
+      <article class="card">
+        <img src="${product.image}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p><strong>Rp${product.price.toLocaleString('id-ID')}</strong></p>
+        <a class="btn" href="/produk/${product.id}">Detail Produk</a>
+      </article>
+    `).join('')}
+  </div>
+</section>
+` }) %>

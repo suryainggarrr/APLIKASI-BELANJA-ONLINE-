@@ -1,0 +1,25 @@
+<%- include('../layout', { title: product ? 'Edit Produk' : 'Tambah Produk', body: `
+<section>
+  <div class="page-title"><h2>${product ? 'Edit Produk' : 'Tambah Produk'}</h2></div>
+  <div class="admin-nav">
+    <a href="/admin/produk">Kembali</a>
+  </div>
+  <div class="form-card">
+    <form method="POST" action="${action}">
+      <label for="name">Nama Produk</label>
+      <input id="name" name="name" type="text" value="${product ? product.name : ''}" required />
+
+      <label for="price">Harga</label>
+      <input id="price" name="price" type="number" value="${product ? product.price : ''}" required />
+
+      <label for="image">URL Gambar</label>
+      <input id="image" name="image" type="text" value="${product ? product.image : ''}" required />
+
+      <label for="description">Deskripsi</label>
+      <textarea id="description" name="description">${product ? product.description : ''}</textarea>
+
+      <button class="btn" type="submit">Simpan</button>
+    </form>
+  </div>
+</section>
+` }) %>

@@ -1,0 +1,20 @@
+<%- include('layout', { title: product.name, body: `
+<section>
+  <div class="page-title"><h2>${product.name}</h2></div>
+  <div class="grid-two">
+    <div class="card">
+      <img src="${product.image}" alt="${product.name}" />
+      <p>${product.description}</p>
+      <p><strong>Rp${product.price.toLocaleString('id-ID')}</strong></p>
+      <a class="btn" href="/order">Pesan Sekarang</a>
+    </div>
+    <div class="card form-card">
+      <h3>Informasi Produk</h3>
+      <p>Nama Produk: ${product.name}</p>
+      <p>Harga: Rp${product.price.toLocaleString('id-ID')}</p>
+      <p>Deskripsi: ${product.description}</p>
+      <p>Nomor WhatsApp tersedia di pojok kanan bawah untuk diskusi cepat.</p>
+    </div>
+  </div>
+</section>
+` }) %>
