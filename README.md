@@ -46,6 +46,9 @@ http://localhost:3001
 - Username: `admin`
 - Password: `admin123`
 
-## Catatan
+## Penulis
 
-Jika ingin mengubah nomor WhatsApp, buka `app.js` dan ubah nilai `whatsappNumber`.
+Dibuat oleh:
+- Nama: Inggar Suryaning Tias 
+- NIM: 101230009
+- Kelas: TF23B
